@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<nav th:replace="fragments :: header"></nav>
+
+<form method="post">
+    <select name="eventIds" multiple class="form-select w-auto">
+        <th:box th:each="event : ${events}">
+            <option th:value="${event.id}" th:text="${event.name}"></option>
+        </th:box>
+    </select>
+
+    <input type="submit" value="Delete" class="btn btn-danger mt-3">
+</form>
+
+</body>
+</html>

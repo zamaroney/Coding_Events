@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<nav th:replace="fragments :: header"></nav>
+
+<form method="post">
+    <div class="form-group">
+        <label class="form-label">Name
+            <input th:field="${event.name}" class="form-control">
+        </label>
+        <p class="errors" th:errors="${event.name}"></p>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Description
+            <input th:field="${event.eventDetails.description}" class="form-control">
+        </label>
+        <p class="errors" th:errors="${event.eventDetails.description}"></p>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Contact Email
+            <input th:field="${event.eventDetails.contactEmail}" class="form-control">
+        </label>
+        <p class="errors" th:errors="${event.eventDetails.contactEmail}"></p>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Category
+            <select th:field="${event.eventCategory}" class = "form-select">
+                <option th:each="eventCategory : ${categories}"
+                        th:value="${eventCategory.id}"
+                        th:text="${eventCategory.name}"
+                ></option>
+                <p class="errors" th:errors="${event.eventCategory}"></p>
+            </select>
+        </label>
+    </div>
+    <div class="form-group mt-3">
+        <input type="submit" value="Create Event" class="btn btn-success">
+    </div>
+</form>
+
+</body>
+</html>
